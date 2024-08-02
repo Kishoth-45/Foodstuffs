@@ -240,7 +240,7 @@
     height: 100%;
     z-index: 15;
     top: 0;
-    background: linear-gradient(rgba(0, 0, 2, 0.644), rgba(1, 1, 95, 0.219)), url('Images/main-banner.png');
+    background: linear-gradient(rgba(0, 0, 2, 0.644), rgba(1, 1, 95, 0.219)), url('/Images/main-banner.png');
     background-position: center;
     background-size: cover;
     display: flex;

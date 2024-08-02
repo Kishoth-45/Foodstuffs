@@ -32,7 +32,6 @@ export const Productcontain = (props) => {
   };
 
   const handleAddToCart = () => {
-    document.querySelector('.mycart').classList.add('mycart-show');
     props.addToCart({
       Image,
       Productname,

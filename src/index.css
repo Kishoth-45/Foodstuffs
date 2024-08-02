@@ -25,7 +25,7 @@ body {
   position: sticky;
   top: 0;
   align-items: center;
-  transition: top 0.3s; /* Add transition for smooth effect */
+  transition: top 0.1s; /* Add transition for smooth effect */
 }
 
 .hidden {
@@ -137,6 +137,25 @@ body {
   color: black;
   border: none;
   outline: none;
+}
+.banner-btns{
+  width: 100%;
+  display: flex;
+  justify-content: baseline;
+}
+
+@media all and (max-width:400px) {
+
+  .banner-btns a {
+    margin-right: 10px !important;
+  }
+  
+  .banner-btns{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
 }
 
 .banner-img {
@@ -431,9 +450,6 @@ body {
 }
 
 .menuitems {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
   color: white;
 }
 
@@ -441,42 +457,22 @@ body {
   padding: 10px;
 }
 
-.menuapbtn,
-.menupagebtn,
-.menucatbtn {
-  margin: 10px 0px;
-  padding: 4px 15px;
+details{
+  padding: 15px 15px;
+  font-size: 17px;
+}
+
+details div{
+  padding-left: 17px;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  padding-top: 5px;
+  font-size: 15px;
 }
 
-.menuapbtn:hover,
-.menucatbtn:hover,
-.menupagebtn:hover {
-  background-color: #febd2f;
-  color: black;
-  transition: 0.2s ease-in-out;
+details div:hover{
+  opacity: 0.7;
 }
 
-.bgbtn {
-  background-color: #febd2f;
-  color: black;
-  transition: 0.2s ease-in-out;
-}
-
-.menuap,
-.menupage,
-.menucat {
-  display: none;
-}
-
-.menuapitem,
-.menupageitem,
-.menucatitem {
-  display: block;
-  padding-left: 20px;
-  font-size: 13px;
-}
 
 .nav-icon-down {
   transform: rotate(180%) !important;

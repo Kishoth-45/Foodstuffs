@@ -60,14 +60,6 @@ export const Navbar = () => {
     const menulist = document.querySelector('.menulist');
     const menucancel = document.querySelector('.menucancel');
 
-    const menuapbtn = document.querySelector('.menuapbtn');
-    const menupagebtn = document.querySelector('.menupagebtn');
-    const menucatbtn = document.querySelector('.menucatbtn');
-
-    const menuap = document.querySelector('.menuap');
-    const menupage = document.querySelector('.menupage');
-    const menucat = document.querySelector('.menucat');
-
     const mycart = document.querySelector('.mycart');
     const mycartcancel = document.querySelector('.mycart-cancel');
     const cartbtn = document.querySelector('.cartbtn');
@@ -115,38 +107,6 @@ export const Navbar = () => {
       menulist.classList.toggle('menushow');
     };
 
-    const menuapclick = (event) => {
-      event.preventDefault();
-      menuap.classList.toggle('menuapitem');
-      menupage.classList.remove('menupageitem');
-      menucat.classList.remove('menucatitem');
-
-      menuapbtn.classList.toggle('bgbtn');
-      menucatbtn.classList.remove('bgbtn');
-      menupagebtn.classList.remove('bgbtn');
-    };
-
-    const menupageclick = (event) => {
-      event.preventDefault();
-      menupage.classList.toggle('menupageitem');
-      menuap.classList.remove('menuapitem');
-      menucat.classList.remove('menucatitem');
-
-      menupagebtn.classList.toggle('bgbtn');
-      menuapbtn.classList.remove('bgbtn');
-      menucatbtn.classList.remove('bgbtn');
-    };
-
-    const menucatclick = (event) => {
-      event.preventDefault();
-      menucat.classList.toggle('menucatitem');
-      menuap.classList.remove('menuapitem');
-      menupage.classList.remove('menupageitem');
-
-      menupagebtn.classList.remove('bgbtn');
-      menuapbtn.classList.remove('bgbtn');
-      menucatbtn.classList.toggle('bgbtn');
-    };
 
     const cartcancelclick = (e) => {
       e.preventDefault();
@@ -171,10 +131,6 @@ export const Navbar = () => {
       menubtn.addEventListener('click', menubtnclick);
       menucancel.addEventListener('click', menucancelclick);
 
-      menuapbtn.addEventListener('click', menuapclick);
-      menupagebtn.addEventListener('click', menupageclick);
-      menucatbtn.addEventListener('click', menucatclick);
-
       cartbtn.addEventListener('click', cartbtnclick);
       minicartbtn.addEventListener('click', minicartbtnclick);
       mycartcancel.addEventListener('click', cartcancelclick);
@@ -188,10 +144,6 @@ export const Navbar = () => {
 
         menubtn.removeEventListener('click', menubtnclick);
         menucancel.removeEventListener('click', menucancelclick);
-
-        menuapbtn.removeEventListener('click', menuapclick);
-        menupagebtn.removeEventListener('click', menupageclick);
-        menucatbtn.removeEventListener('click', menucatclick);
 
         cartbtn.removeEventListener('click', cartbtnclick);
         minicartbtn.removeEventListener('click', minicartbtnclick);
@@ -282,9 +234,8 @@ export const Navbar = () => {
         <h2>Food Stuffs</h2>
         <div className='menucancel'><i class="fa-solid fa-xmark"></i></div>
         <div className='menuitems'>
-          <div className='menuapbtn'>All Products <i className="bi bi-chevron-down nav-icon-down"></i></div>
-          <div className='menuap'>
-          <h3>Cookware</h3>
+        <details>
+          <summary>All Products</summary>
           <div>Bakers</div>
           <div>Bestseller</div>
           <div>Breads</div>
@@ -292,28 +243,26 @@ export const Navbar = () => {
           <div>Slices</div>
           <div>Fruits</div>
           <div>Vegetables</div>
-          </div>
-
-          <div className='menupagebtn'>Pages <i className="bi bi-chevron-down nav-icon-down"></i></div>
-          <div className='menupage'>
-          <div>About us</div>
-          <div>Contact us</div>
-          <div> Faq's</div>
-          <div>Article Page</div>
-          <div>Blog Page</div>                
-          <div>Category Page</div>
-          </div>
-
-        <div className='menucatbtn'>Category <i className="bi bi-chevron-down nav-icon-down"></i></div>
-        <div className='menucat'>
-        <div>Bakers</div>
-        <div>Bestseller</div>
-        <div>Breads</div>
-        <div>Cookies</div>
-        <div>fruits</div>
-        <div>Slices</div>
-        <div>vegetables</div>
-        </div>
+          </details>
+          <details>
+            <summary>Pages</summary>
+            <div>About us</div>
+            <div>Contact us</div>
+            <div> Faq's</div>
+            <div>Article Page</div>
+            <div>Blog Page</div>                
+            <div>Category Page</div>
+          </details>
+          <details>
+            <summary>Category</summary>
+            <div>Bakers</div>
+            <div>Bestseller</div>
+            <div>Breads</div>
+            <div>Cookies</div>
+            <div>fruits</div>
+            <div>Slices</div>
+            <div>vegetables</div>
+          </details>
         </div>
 
       </div>
