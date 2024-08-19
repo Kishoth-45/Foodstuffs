@@ -1,21 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+
+export const Mycart = ({ Image, Productname, Quantity, Option, Price, index, deleteCartItem, updateCartItemSize }) => {
+  const [ProductNumber, setProductNumber] = useState(1);
 
 
-export const Mycart = ({ Image, Productname, Quantity, Option, Price, index, deleteCartItem }) => {
+  const decrement = () => {
+    if (ProductNumber > 1) {
+      const newProductNumber = ProductNumber - 1;
+      setProductNumber(newProductNumber);
+      updateCartItemSize(index, newProductNumber);
+    }
+  };
+
+  const increment = () => {
+    const newProductNumber = ProductNumber + 1;
+    setProductNumber(newProductNumber);
+    updateCartItemSize(index, newProductNumber);
+  };
+ 
+  const totalPrice = ProductNumber * Price;
+
   return (
     <div className='mycart-content'>
+      <div className='mycart-part-1'>
       <div className='mycart-img'>
         <img src={Image} alt={Productname} />
       </div>
-      <div className='mycart-details'>
+      <div>
         <div className='mycart-title'>{Productname}</div>
         <div className='mt-1'>{Quantity}: {Option}</div>
-        <div className='mycart-increment mt-1'>
-          <div> - </div>
-          <div>1</div>
-          <div>+</div>
         </div>
-        <div className='mt-1'>Rs.{Price}</div>
+        </div>
+      <div className='mycart-details'>
+        
+        <div className='mycart-increment mt-1'>
+          <div className='minus' onClick={decrement}> - </div>
+          <div className='product-number'>{ProductNumber}</div>
+          <div className='plus' onClick={increment}>+</div>
+        </div>
+        <div className='mt-1'>Rs.{totalPrice}</div>
       </div>
       <div className='trash' onClick={() => deleteCartItem(index)}>
         <i className="bi bi-trash"></i>
@@ -26,7 +49,8 @@ export const Mycart = ({ Image, Productname, Quantity, Option, Price, index, del
 
 
 
-export const Mycartcontainer = ({ cartItems = [], deleteCartItem }) => {
+
+export const Mycartcontainer = ({ cartItems = [], deleteCartItem, updateCartItemSize }) => {
   return (
     <>
       {cartItems.map((item, index) => (
@@ -39,10 +63,12 @@ export const Mycartcontainer = ({ cartItems = [], deleteCartItem }) => {
           Price={item.Price}
           index={index}
           deleteCartItem={deleteCartItem}
+          updateCartItemSize={updateCartItemSize}
         />
       ))}
     </>
   );
 };
+
 
 

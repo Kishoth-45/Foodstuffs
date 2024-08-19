@@ -29,16 +29,21 @@ export const Register = () => {
     return Object.keys(formErrors).length === 0;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
-      axios.post('http://127.0.0.1:3001/register', { name, email, password })
-        .then(result => {
-          navigate('/home');
-        })
-        .catch(err => {
-          setBackendErrors(err.response.data.error || 'Registration failed');
-        });
+      try {
+        const result = await axios.post('http://127.0.0.1:3001/register', { name, email, password });
+        if (result.data.token) { // Expecting a token from the server
+          localStorage.setItem('token', result.data.token); // Store the token
+          localStorage.setItem('isAuthenticated', 'true'); // Optionally, set authentication status
+        } else {
+          setBackendErrors('Registration failed');
+        }
+      } catch (err) {
+        setBackendErrors(err.response.data.error || 'Registration failed');
+      }
+      navigate('/home');
     }
   };
 
@@ -85,7 +90,7 @@ export const Register = () => {
           </div>
           {backendErrors && <div className='backend-error mt-2'>{backendErrors}</div>}
           <center>
-            <button type="submit" className='signin mt-3'>Sign in</button>
+            <button type="submit" className='signin mt-3'>Sign up</button>
           </center>
         </form>
         <div className='mt-3 navi'>

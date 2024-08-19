@@ -1,22 +1,10 @@
 import React, { useEffect,useState } from 'react';
-import { Outlet, Link, json } from 'react-router-dom';
+import { Outlet, Link, json, useNavigate } from 'react-router-dom';
 import '../index.css';
-import { Mycartcontainer } from './mycart';
+import useUserImage from './userimage';
 
 export const Navbar = () => {
-
-  const [cartItems, setCartItems] = useState([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3001/products')
-      .then(response => response.json())
-      .then(data => setCartItems(data))
-      .catch(error => console.error('Error fetching products:', error));
-  }, []);
-
-  const deleteCartItem = (index) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
+const userImage = useUserImage();
    
   useEffect(() => {
     const navbar = document.querySelector('.mynavbar');
@@ -60,14 +48,11 @@ export const Navbar = () => {
     const menulist = document.querySelector('.menulist');
     const menucancel = document.querySelector('.menucancel');
 
-    const mycart = document.querySelector('.mycart');
-    const mycartcancel = document.querySelector('.mycart-cancel');
-    const cartbtn = document.querySelector('.cartbtn');
-    const minicartbtn = document.querySelector('.minicartbtn');
 
     const allicon=document.querySelector('.all-icon');
     const pageicon=document.querySelector('.page-icon');
     const caticon=document.querySelector('.cat-icon');
+
 
     const allhandleclick = (event) => {
       event.preventDefault();
@@ -107,50 +92,30 @@ export const Navbar = () => {
       menulist.classList.toggle('menushow');
     };
 
-
-    const cartcancelclick = (e) => {
-      e.preventDefault();
-      mycart.classList.remove('mycart-show');
-    };
-
-    const cartbtnclick = (e) => {
-      e.preventDefault();
-      mycart.classList.toggle('mycart-show');
-    };
-
-    const minicartbtnclick = (e) => {
-      e.preventDefault();
-      mycart.classList.toggle('mycart-show');
-    };
+ 
 
     if (all && allproducts) {
-      all.addEventListener('click', allhandleclick);
-      pagehead.addEventListener('click', pagehandleclick);
-      categoryhead.addEventListener('click', categoryhandleclick);
+      all.addEventListener('mouseover', allhandleclick);
+      pagehead.addEventListener('mouseover', pagehandleclick);
+      categoryhead.addEventListener('mouseover', categoryhandleclick);
 
       menubtn.addEventListener('click', menubtnclick);
       menucancel.addEventListener('click', menucancelclick);
 
-      cartbtn.addEventListener('click', cartbtnclick);
-      minicartbtn.addEventListener('click', minicartbtnclick);
-      mycartcancel.addEventListener('click', cartcancelclick);
     }
 
     return () => {
       if (all && allproducts) {
-        all.removeEventListener('click', allhandleclick);
-        pagehead.removeEventListener('click', pagehandleclick);
-        categoryhead.removeEventListener('click', categoryhandleclick);
+        all.removeEventListener('mouseover', allhandleclick);
+        pagehead.removeEventListener('mouseover', pagehandleclick);
+        categoryhead.removeEventListener('mouseover', categoryhandleclick);
 
         menubtn.removeEventListener('click', menubtnclick);
         menucancel.removeEventListener('click', menucancelclick);
 
-        cartbtn.removeEventListener('click', cartbtnclick);
-        minicartbtn.removeEventListener('click', minicartbtnclick);
-        mycartcancel.removeEventListener('click', cartcancelclick);
       }
     };
-  }, [cartItems]);
+  });
 
   return (
     <>
@@ -160,24 +125,32 @@ export const Navbar = () => {
           <Link to='/home'> <img src="Images/foodlogo.svg" alt="logo" width={'105px'} /></Link>
           </div>
           <div className='all'>
-            All products <i class="fa-solid fa-angle-down nav-icon-down all-icon"></i>
+            All products <i className="fa-solid fa-angle-down nav-icon-down all-icon"></i>
           </div>
           <div className='pagehead'>
-            Pages <i class="fa-solid fa-angle-down nav-icon-down page-icon"></i>
+            Pages <i className="fa-solid fa-angle-down nav-icon-down page-icon"></i>
           </div>
           <div className='categoryhead'>
-            Category <i class="fa-solid fa-angle-down nav-icon-down cat-icon"></i>
+            Category <i className="fa-solid fa-angle-down nav-icon-down cat-icon"></i>
           </div>
         </div>
         <div className='navpart2'>
           <div className='searchicon'>
             <i className="bi bi-search"></i> Search
           </div>
-          <div>
-          <i class="bi bi-person-circle"></i>
-          </div>
+        
           <div className='cartbtn'>
-            Cart <i className="bi bi-cart2"></i>
+           <Link to='/viewcart' className='link'>Cart <i className="bi bi-cart2"></i></Link> 
+          </div>
+          <div>
+          <Link to={`/userprofile`}>
+          {userImage?( 
+         <img src={userImage} alt="User" className='userimagenavbar' />
+          ):(
+             <i className="bi bi-person-circle"></i>
+          )
+        }
+          </Link> 
           </div>
         </div>
         <div className='mininavbar'>
@@ -187,10 +160,10 @@ export const Navbar = () => {
           <div>
             <div className='minibar'>
               <div className='search-mini'><i className="bi bi-search"></i> </div>
-              <div><i class="fa-regular fa-user"></i></div>
-              <div className='minicartbtn'><i className="bi bi-cart2"></i></div>
-              <div className='menubtn'><i class="fa-solid fa-bars-staggered"></i></div>
-              {/* <i class="fa-solid fa-bars-staggered"></i> */}
+              <div><Link to='/userprofile'><i className="fa-regular fa-user"></i></Link> </div>
+              <div className='minicartbtn'> <Link to='/viewcart' className='link'><i className="bi bi-cart2"></i></Link></div>
+              <div className='menubtn'><i className="fa-solid fa-bars-staggered"></i></div>
+              {/* <i className="fa-solid fa-bars-staggered"></i> */}
             </div>
           </div>
 
@@ -232,7 +205,7 @@ export const Navbar = () => {
 
       <div className='menulist'>
         <h2>Food Stuffs</h2>
-        <div className='menucancel'><i class="fa-solid fa-xmark"></i></div>
+        <div className='menucancel'><i className="fa-solid fa-xmark"></i></div>
         <div className='menuitems'>
         <details>
           <summary>All Products</summary>
@@ -266,40 +239,6 @@ export const Navbar = () => {
         </div>
 
       </div>
-
-
-      <div className='mycart'>
-      <div className='mycart-header'>
-        <div>
-          <i className="fa-solid fa-xmark me-3 mycart-cancel"></i> My Cart
-        </div>
-        <div>{cartItems.length} ITEMS</div>
-      </div>
-      <div className='mycart-content-parent'>
-        <Mycartcontainer cartItems={cartItems} deleteCartItem={deleteCartItem} />
-      </div>
-      <div className='mycart-footer'>
-        <div className='mycart-footer-price'>
-          <div>Sub Total</div>
-          <div>Rs.500</div>
-        </div>
-        <div className='proceedcart'>
-          <div className='proceed'>
-            Proceed to checkout <i className="fa-regular fa-credit-card"></i>
-          </div>
-          <div className='viewcart mt-1'>
-            <div><Link to='/viewcart'>View Cart</Link></div>
-            <div className='ms-2 mt-1'>
-              <i className="bi bi-arrow-right"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-
-        
-
       <Outlet />
     </>
   );

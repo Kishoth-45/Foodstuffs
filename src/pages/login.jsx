@@ -9,12 +9,12 @@ export const Login = () => {
   const [backendErrors, setBackendErrors] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem('isAuthenticated');
-    if (isAuthenticated) {
-      navigate('/home');
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const isAuthenticated = localStorage.getItem('isAuthenticated');
+  //   if (isAuthenticated) {
+  //     navigate('/home');
+  //   }
+  // }, [navigate]);
 
   const validateForm = () => {
     let formErrors = {};
@@ -34,7 +34,7 @@ export const Login = () => {
       axios.post('http://127.0.0.1:3001/login', { email, password })
         .then(result => {
           if (result.data === 'success') {
-            localStorage.setItem('isAuthenticated', 'true');
+            // localStorage.setItem('isAuthenticated', 'true');
             navigate('/home');
           } else {
             setBackendErrors('Login failed');

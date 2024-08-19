@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './productstyle.css';
 import { Product } from './product';
-import { Mycartcontainer } from './mycart';
 
 export const Home = () => {
 
   const [cartItems, setCartItems] = useState([]);
+  const [orderitems, setOrderitems] = useState([])
 
   const addToCart = (product) => {
     setCartItems([...cartItems, product]);
   };
- 
+
+  const ordernow = (product) => {
+    setOrderitems([...orderitems, product])
+  }
+  const navigate=useNavigate()
+
+  const seemore=()=>{
+    navigate('/fooditems')
+  }
+
 
   useEffect(() => {
     const allproducts = document.querySelector('.allproducts');
@@ -19,20 +29,30 @@ export const Home = () => {
     const menulist = document.querySelector('.menulist');
     const mycart = document.querySelector('.mycart');
 
-    const allicon=document.querySelector('.all-icon');
-    const pageicon=document.querySelector('.page-icon');
-    const caticon=document.querySelector('.cat-icon');
+    const allicon = document.querySelector('.all-icon');
+    const pageicon = document.querySelector('.page-icon');
+    const caticon = document.querySelector('.cat-icon');
 
     const homebody = document.querySelector('.homebody');
 
 
     const homebodyclick = (event) => {
       event.preventDefault();
+      // allproducts.classList.remove('alltool');
+      // category.classList.remove('categorytool');
+      // pages.classList.remove('pagetool');
+      menulist.classList.remove('menushow');
+      mycart.classList.remove('mycart-show');
+      // allicon.classList.remove('transform-icon');
+      // pageicon.classList.remove('transform-icon');
+      // caticon.classList.remove('transform-icon');
+    };
+
+    const homebodyover = (event) => {
+      event.preventDefault();
       allproducts.classList.remove('alltool');
       category.classList.remove('categorytool');
       pages.classList.remove('pagetool');
-      menulist.classList.remove('menushow');
-      mycart.classList.remove('mycart-show');
       allicon.classList.remove('transform-icon');
       pageicon.classList.remove('transform-icon');
       caticon.classList.remove('transform-icon');
@@ -40,10 +60,12 @@ export const Home = () => {
 
     if (homebody) {
       homebody.addEventListener('click', homebodyclick);
+      homebody.addEventListener('mouseover', homebodyover);
     }
 
     return () => {
       if (homebody) {
+        homebody.removeEventListener('mouseover', homebodyover);
         homebody.removeEventListener('click', homebodyclick);
       }
     };
@@ -61,13 +83,13 @@ export const Home = () => {
               <p>Brinjal, also known as eggplant or aubergine, is a plant that belongs to the nightshade family. It is a popular vegetable in many cuisines around the world. Brinjals are typically purple or white in color, and they have a spongy, meaty texture.</p>
               <div className='banner-btns'>
                 <div>
-                <a href="" className="btn showbtn">
-                   Show More
-                </a> </div>
+                  <a href="" className="btn showbtn">
+                    Show More
+                  </a> </div>
                 <div>
-                <a href="" className="btn findbtn">
-                  Find Products
-                </a>
+                  <a href="" className="btn findbtn">
+                    Find Products
+                  </a>
                 </div>
               </div>
             </div>
@@ -88,7 +110,51 @@ export const Home = () => {
         {/* Products */}
         <div className='container p-3 mt-4'>
           <div className='row'>
-            <Product addToCart={addToCart} />
+            <Product addToCart={addToCart} ordernow={ordernow} />
+          </div>
+        </div>
+
+        <div className='see-more'>
+          <div className='see-more-btn'  onClick={seemore}>
+            <i className="fa-solid fa-angles-right me-1"></i>See More
+            </div>
+        </div>
+        {/* footer */}
+        <div className='footer'>
+
+          <div className='footer-logo'>
+            <img src="Images/foodlogo.svg" alt="foodlogo" width={'130px'} />
+            <h3>  Fresh fruits & <br />
+              vegetables</h3>
+            <div className='mt-3'>
+              Strawberries are a good source of vitamin C, potassium, and fiber. They are also a good source of antioxidants, including ellagic acid, which has been linked to a reduced risk of cancer.
+            </div>
+          </div>
+
+          <div className='footer-shop'>
+            <h2> Shop</h2>
+            <div>Search</div>
+            <div>Privacy Policy</div>
+            <div>Shipping & Delivery</div>
+            <div>Terms & Conditions</div>
+          </div>
+
+          <div className='footer-account'>
+            <h2>Account</h2>
+            <div>About us</div>
+            <div>Contact us</div>
+            <div>Faq's</div>
+            <div>Article Page</div>
+            <div>Blog Page</div>
+            <div>Category Page</div>
+          </div>
+
+          <div className='footer-share'>
+            <h2>Share</h2>
+            <div>
+              Social sharing describes when social media users broadcast web content on a
+              social network to their connections
+            </div>
           </div>
         </div>
       </div>
