@@ -17,9 +17,9 @@ function App() {
       <HashRouter>
         <Navbar />
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route  index element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route index element={<Login />} />
+          <Route path='/login' element={<Login />} />
           <Route path="/viewcart" element={<Viewcart />} />
           <Route path="/ordernow" element={<Order />} />
           <Route path="/userprofile" element={<Userprofile />} />

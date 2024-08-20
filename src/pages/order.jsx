@@ -1,8 +1,34 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { OrderContext } from '../OrderContext';
 import {Link} from 'react-router-dom'
 
 export const Order = () => {
+
+
+  useEffect(() => {
+   
+    const menulist = document.querySelector('.menulist');
+    const mycart = document.querySelector('.mycart');
+
+    const viewbody = document.querySelector('.ordernowpage');
+
+
+    const viewbodyclick = (event) => {
+      event.preventDefault();
+      menulist.classList.remove('menushow');
+      mycart.classList.remove('mycart-show');
+    };
+
+    if (viewbody) {
+      viewbody.addEventListener('click', viewbodyclick);
+    }
+
+    return () => {
+      if (viewbody) {
+        viewbody.removeEventListener('click', viewbodyclick);
+      }
+    };
+  }, []);
 
   const { order } = useContext(OrderContext);
 

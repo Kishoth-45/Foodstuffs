@@ -15,9 +15,9 @@ export const Home = () => {
   const ordernow = (product) => {
     setOrderitems([...orderitems, product])
   }
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
-  const seemore=()=>{
+  const seemore = () => {
     navigate('/fooditems')
   }
 
@@ -38,14 +38,8 @@ export const Home = () => {
 
     const homebodyclick = (event) => {
       event.preventDefault();
-      // allproducts.classList.remove('alltool');
-      // category.classList.remove('categorytool');
-      // pages.classList.remove('pagetool');
       menulist.classList.remove('menushow');
       mycart.classList.remove('mycart-show');
-      // allicon.classList.remove('transform-icon');
-      // pageicon.classList.remove('transform-icon');
-      // caticon.classList.remove('transform-icon');
     };
 
     const homebodyover = (event) => {
@@ -115,10 +109,32 @@ export const Home = () => {
         </div>
 
         <div className='see-more'>
-          <div className='see-more-btn'  onClick={seemore}>
+          <div className='see-more-btn' onClick={seemore}>
             <i className="fa-solid fa-angles-right me-1"></i>See More
-            </div>
+          </div>
         </div>
+
+
+        {/* email signin */}
+
+        <div className='subscribe'>
+          <div className='subscribe-details'>
+            <div className='subscribe-logo'>FoodStuffs</div>
+            <div className='subscribe-head'>Subscribe newsletter</div>
+            <div className='subscribe-head-2'>and get -20% off</div>
+            <p>Grapes are a good source of vitamin C, potassium, and fiber. 
+            They are also a good source of antioxidants, including resveratrol, 
+            which has been linked to a reduced risk of heart disease and cancer.</p>
+          </div>
+
+          <div className='subscribe-email'>
+            <div>Type Your Email:</div>
+            <div className='subscribe-input'>
+            <div className='subscribe-input-box'><input type="text" placeholder='Enter Email address...' /></div>
+            <div><button>Subscribe</button></div> </div>
+          </div>
+        </div>
+
         {/* footer */}
         <div className='footer'>
 

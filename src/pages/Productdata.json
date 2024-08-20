@@ -58,5 +58,35 @@
         "opt1":"500gm",
         "opt2":"1kg",
         "quantity":"Size"
+    },
+    {
+        "name":"Cookies",
+        "price":"500.00",
+        "price2":"730.00",
+        "img1":"Images/cookies1.webp",
+        "img2":"Images/cookies2.webp",
+        "opt1":"stick",
+        "opt2":"heap-square",
+        "quantity":"Style"
+    },
+    {
+        "name":"Cos Lettuce",
+        "price":"200.00",
+        "price2":"100.00",
+        "img1":"Images/lettuce1.webp",
+        "img2":"Images/lettuce2.webp",
+        "opt1":"500gm",
+        "opt2":"200gm",
+        "quantity":"Size"
+    },
+    {
+        "name":"Sugar Bowl Bakery",
+        "price":"900.00",
+        "price2":"500.00",
+        "img1":"Images/sugarbowl1.png",
+        "img2":"Images/sugarbowl2.png",
+        "opt1":"Large",
+        "opt2":"small",
+        "quantity":"Size"
     }
 ]

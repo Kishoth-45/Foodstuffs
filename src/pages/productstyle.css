@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Average+Sans&family=Inter:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Alatsi&family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .card{
     display: flex;
@@ -46,6 +46,7 @@
     }
     .card-img img{
         width: 200px !important;
+        height: auto !important;
         padding-left: 30px !important;
         padding-top: 10px;
     }
@@ -228,6 +229,7 @@
 }
 .card-img img{
     width: 150px;
+    height: 90px;
     padding-left: 20px;
     padding-top: 10px;
 }
@@ -704,8 +706,8 @@
     top: 100px;
     margin-top: 40px;
     padding: 20px;
-    box-shadow: 1px 0 1px 1px #5e4000de;
-    border-radius: 5px;
+    box-shadow: 5px 5px 10px 4px #cac9c6de;
+    border-radius: 2px;
 }
 
 
@@ -1046,6 +1048,29 @@
     opacity: 0.8;
 }
 
+@media all and (max-width:768px) {
+    .see-more{
+        font-size: 20px;
+        text-align: right;
+        padding:0px 7.5rem;
+        padding-bottom: 60px;
+        position: relative;
+    }
+    .see-more-btn i{
+        font-size: 17px;
+    }
+    
+    .see-more-btn{
+        position: absolute;
+        right: 3rem;
+        width: 110px;
+        cursor: pointer;
+    }
+    .see-more-btn:hover{
+        opacity: 0.8;
+    }
+}
+
 
 /* Footer */
 
@@ -1059,11 +1084,13 @@
     font-size: 15px;
     text-align: justify;
     align-items: baseline;
+    font-family: "Roboto", sans-serif;
 }
 
 .footer-logo h3{
     font-size: 26px;
     margin: 10px 0px;
+    font-family: "Kanit", sans-serif;
 }
 
 .footer-logo{
@@ -1073,4 +1100,163 @@
 
 .footer-share{
     width: 30%;
+}
+
+.footer h2{
+    font-size: 22px;
+    font-family: "Kanit", sans-serif;
+    margin-bottom: 10px;
+}
+
+.footer-shop>div,
+.footer-account>div{
+   margin: 5px 0;
+   cursor: pointer;
+}
+
+.footer-shop>div:hover,
+.footer-account>div:hover{
+   margin: 0px 0 0 5px;
+   opacity: 0.8;
+}
+
+@media all and (max-width:768px) {
+    .footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #0d2020;
+        color: #febd2f;
+        padding: 30px;
+        font-size: 15px;
+        text-align: justify;
+        align-items: baseline;
+        gap: 25px;
+    }
+    
+    .footer-logo h3{
+        font-size: 26px;
+        margin: 10px 0px;
+    }
+    
+    .footer-logo{
+        width: 100%;
+        text-align: justify;
+    }
+    
+    .footer-share{
+        width: 100%;
+    }
+
+}
+
+
+
+/* subscribe */
+
+
+.subscribe{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(rgba(0, 20, 17, 0.781), rgba(1, 34, 28, 0.548)), url('/Images/email-banner.jpg');
+    background-position: center;
+    background-size: cover;
+    padding: 50px 5rem;
+    color: #fff;
+    font-family: 20px;
+    text-align: justify;
+    font-family: "Roboto", sans-serif;
+    /* font-family: "Average Sans", sans-serif; */
+}
+
+.subscribe-details{
+    width: 50%;
+}
+
+.subscribe-head{
+    font-size: 45px;
+    margin: 0;
+    color: #febd2f;
+    font-family: "Average Sans", sans-serif;
+    font-weight: 600;
+}
+
+.subscribe-head-2{
+    font-size: 40px;
+    font-family: "Average Sans", sans-serif;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.subscribe-logo{
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+.subscribe-email{
+    width: 42%;
+}
+
+.subscribe-email div{
+    font-family: "Average Sans", sans-serif;
+}
+
+.subscribe-email input{
+    border: 1px solid #febd2f;
+    background-color: transparent;
+    color: #febd2f;
+    outline: none;
+    padding: 8px 10px;
+    width: 100%;
+}
+
+.subscribe-input{
+    display: flex;
+    margin: 30px 0;
+    align-items: center;
+    width: 100%;
+}
+
+.subscribe-input .subscribe-input-box{
+    width: 100%;
+}
+
+.subscribe-email input::placeholder{
+    color: #febd2f;
+}
+
+.subscribe-input button{
+    border: 1px solid #febd2f;
+    outline: none;
+    background-color: #febd2f;
+    color: #000;
+    padding: 8px 10px;
+    font-family: "Kanit", sans-serif;
+}
+
+
+
+@media all and (max-width:768px) {
+    .subscribe{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: start;
+        padding: 20px 2rem;
+        gap: 30px;
+    }
+    .subscribe-details{
+        width: 100%;
+    }
+    .subscribe-email{
+        width: 100%;
+    }
+    .subscribe-input{
+        margin: 10px 0;
+    }
 }
