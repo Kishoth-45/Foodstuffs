@@ -19,7 +19,6 @@ export const Fooditems = () => {
       const pages = document.querySelector('.pages');
       const category = document.querySelector('.category');
       const menulist = document.querySelector('.menulist');
-      const mycart = document.querySelector('.mycart');
   
       const allicon = document.querySelector('.all-icon');
       const pageicon = document.querySelector('.page-icon');
@@ -31,7 +30,6 @@ export const Fooditems = () => {
       const viewbodyclick = (event) => {
         event.preventDefault();
         menulist.classList.remove('menushow');
-        mycart.classList.remove('mycart-show');
       };
   
       const viewbodyover = (event) => {

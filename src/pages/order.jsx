@@ -8,7 +8,6 @@ export const Order = () => {
   useEffect(() => {
    
     const menulist = document.querySelector('.menulist');
-    const mycart = document.querySelector('.mycart');
 
     const viewbody = document.querySelector('.ordernowpage');
 
@@ -16,7 +15,6 @@ export const Order = () => {
     const viewbodyclick = (event) => {
       event.preventDefault();
       menulist.classList.remove('menushow');
-      mycart.classList.remove('mycart-show');
     };
 
     if (viewbody) {

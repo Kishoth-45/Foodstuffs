@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export const Userprofile = () => {
 
-    const [isDisabled, setIsDisabled] = useState(true)
-
+    const [isDisabled, setIsDisabled] = useState(true);
     const [gender, setGender] = useState('');
 
     const handleCheckboxChange = (value) => {
@@ -15,56 +13,50 @@ export const Userprofile = () => {
         setGender(value);
       }
     };
-
     
-  useEffect(() => {
-    const allproducts = document.querySelector('.allproducts');
-    const pages = document.querySelector('.pages');
-    const category = document.querySelector('.category');
-    const menulist = document.querySelector('.menulist');
-    const mycart = document.querySelector('.mycart');
+   
+    
+    
 
-    const allicon = document.querySelector('.all-icon');
-    const pageicon = document.querySelector('.page-icon');
-    const caticon = document.querySelector('.cat-icon');
+    useEffect(() => {
+        const allproducts = document.querySelector('.allproducts');
+        const pages = document.querySelector('.pages');
+        const category = document.querySelector('.category');
 
-    const userprofile = document.querySelector('.userprofile');
+        const allicon = document.querySelector('.all-icon');
+        const pageicon = document.querySelector('.page-icon');
+        const caticon = document.querySelector('.cat-icon');
 
+        const userprofile = document.querySelector('.userprofile');
+        
 
-    const userprofileclick = (event) => {
-      event.preventDefault();
-      menulist.classList.remove('menushow');
-      mycart.classList.remove('mycart-show');
-    };
+        const userprofileover = (event) => {
+            event.preventDefault();
+            allproducts.classList.remove('alltool');
+            category.classList.remove('categorytool');
+            pages.classList.remove('pagetool');
+            allicon.classList.remove('transform-icon');
+            pageicon.classList.remove('transform-icon');
+            caticon.classList.remove('transform-icon');
+        };
 
-    const userprofileover = (event) => {
-      event.preventDefault();
-      allproducts.classList.remove('alltool');
-      category.classList.remove('categorytool');
-      pages.classList.remove('pagetool');
-      allicon.classList.remove('transform-icon');
-      pageicon.classList.remove('transform-icon');
-      caticon.classList.remove('transform-icon');
-    };
+        if (userprofile) {
+            userprofile.addEventListener('mouseover', userprofileover);
+        }
 
-    if (userprofile) {
-        userprofile.addEventListener('click', userprofileclick);
-        userprofile.addEventListener('mouseover', userprofileover);
-    }
-
-    return () => {
-      if (userprofile) {
-        userprofile.removeEventListener('mouseover', userprofileover);
-        userprofile.removeEventListener('click', userprofileclick);
-      }
-    };
-  }, []);
+        return () => {
+            if (userprofile) {
+                userprofile.removeEventListener('mouseover', userprofileover);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const userImageElement = document.querySelector('.userimage');
         const fileInputElement = document.querySelector('.uploadfile');
         const imgEditElement = document.querySelector('.img-edit');
 
+        // Load saved image from localStorage
         const savedImage = localStorage.getItem('userImage');
         if (savedImage && userImageElement) {
             userImageElement.src = savedImage;

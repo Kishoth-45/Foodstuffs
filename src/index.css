@@ -19,7 +19,7 @@ body {
   background-color: #173334;
   color: #febd2f;
   justify-content: space-between;
-  font-family: "Poppins", sans-serif;
+ font-family: "Roboto", sans-serif;
   padding: 0px 5rem;
   z-index: 10;
   position: sticky;
@@ -40,7 +40,7 @@ body {
   background-color: #173334;
   color: #febd2f;
   justify-content: space-between;
-  font-family: "Poppins", sans-serif;
+ font-family: "Roboto", sans-serif;
   padding: 15px 5rem;
   z-index: 10;
   position: sticky;
@@ -142,6 +142,7 @@ body {
   width: 100%;
   display: flex;
   justify-content: baseline;
+  font-family: "Kanit", sans-serif;
 }
 
 @media all and (max-width:400px) {
@@ -294,7 +295,7 @@ body {
     background-color: #173334;
     color: #febd2f;
     justify-content: space-between;
-    font-family: "Poppins", sans-serif;
+   font-family: "Roboto", sans-serif;
     padding: 10px;
     position: sticky;
     border-bottom: #febd2f 0.5px solid;
@@ -399,7 +400,7 @@ body {
     /* Initially off-screen */
     height: 100%;
     font-size: 15px;
-    font-family: "Inter", sans-serif;
+    font-family: "Roboto", sans-serif;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     overflow-y: scroll;
     z-index: 11;

@@ -75,8 +75,8 @@ export const Productcontain = (props) => {
             <div><i className='fa-solid fa-pizza-slice'></i></div>
             <div><i className='fa-regular fa-eye'></i></div>
           </div>
-          <div className='ordernow mt-3' onClick={handleordernow}>
-            Order Now
+          <div className='ordernow mt-4' onClick={handleordernow}>
+           Order Now
           </div>
         </div>
         <div className='details mt-2'>
@@ -96,7 +96,7 @@ export const Productcontain = (props) => {
               Order Now
             </div>
             <div className={isAddedcart ? 'viewcart mt-3' : 'addcart mt-3'} onClick={isAddedcart ? handleViewCart : handleAddToCart}>
-              {isAddedcart ? 'View Cart' : 'Add To Cart'}
+            <i className="fa-solid fa-basket-shopping me-1"></i> {isAddedcart ? 'View Cart' : 'Add To Cart'}
             </div>
           </div>
         </div>

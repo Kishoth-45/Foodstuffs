@@ -27,7 +27,6 @@ export const Home = () => {
     const pages = document.querySelector('.pages');
     const category = document.querySelector('.category');
     const menulist = document.querySelector('.menulist');
-    const mycart = document.querySelector('.mycart');
 
     const allicon = document.querySelector('.all-icon');
     const pageicon = document.querySelector('.page-icon');
@@ -39,7 +38,6 @@ export const Home = () => {
     const homebodyclick = (event) => {
       event.preventDefault();
       menulist.classList.remove('menushow');
-      mycart.classList.remove('mycart-show');
     };
 
     const homebodyover = (event) => {
@@ -78,11 +76,11 @@ export const Home = () => {
               <div className='banner-btns'>
                 <div>
                   <a href="" className="btn showbtn">
-                    Show More
+                  <i className="fa-solid fa-gifts me-1"></i>  Show More
                   </a> </div>
                 <div>
                   <a href="" className="btn findbtn">
-                    Find Products
+                  <i class="fa-solid fa-paintbrush me-1"></i>Find Products
                   </a>
                 </div>
               </div>
@@ -114,6 +112,42 @@ export const Home = () => {
           </div>
         </div>
 
+        {/* great */}
+        <div className='great-service'>
+
+          <div className='great-part-1'>
+            <div className='great-details'>
+            <h3>Excellent service!</h3>
+            <p>We had several questions and minor issues that we werent aware of how to fix it. Contacted support and they were super quick.</p>
+            <span className="star-count">
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-half me-2"></i>
+              4.5 / <b> 5.0</b></span>
+            </div>
+            <div><img src="Images/organic.jpg" alt="" /></div>
+          </div>
+
+          <div className='great-part-2'>
+            <div className='great-details'>
+            <h3> Great Products!</h3>
+            <p>Great theme with LOTS of options and GREAT support. Their support is awesome.  Great communication and service!.</p>
+            <span className="star-count">
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-fill"></i>
+            <i className="bi bi-star-half  me-2"></i>
+              4.5 / <b> 5.0</b>
+              </span>
+            </div>
+            <div><img src="Images/organic.jpg" alt="" /></div>
+          </div>
+
+        </div>
+
 
         {/* email signin */}
 
@@ -122,16 +156,16 @@ export const Home = () => {
             <div className='subscribe-logo'>FoodStuffs</div>
             <div className='subscribe-head'>Subscribe newsletter</div>
             <div className='subscribe-head-2'>and get -20% off</div>
-            <p>Grapes are a good source of vitamin C, potassium, and fiber. 
-            They are also a good source of antioxidants, including resveratrol, 
-            which has been linked to a reduced risk of heart disease and cancer.</p>
+            <p>Grapes are a good source of vitamin C, potassium, and fiber.
+              They are also a good source of antioxidants, including resveratrol,
+              which has been linked to a reduced risk of heart disease and cancer.</p>
           </div>
 
           <div className='subscribe-email'>
             <div>Type Your Email:</div>
             <div className='subscribe-input'>
-            <div className='subscribe-input-box'><input type="text" placeholder='Enter Email address...' /></div>
-            <div><button>Subscribe</button></div> </div>
+              <div className='subscribe-input-box'><input type="text" placeholder='Enter Email address...' /></div>
+              <div><button>Subscribe</button></div> </div>
           </div>
         </div>
 
@@ -144,6 +178,13 @@ export const Home = () => {
               vegetables</h3>
             <div className='mt-3'>
               Strawberries are a good source of vitamin C, potassium, and fiber. They are also a good source of antioxidants, including ellagic acid, which has been linked to a reduced risk of cancer.
+            </div>
+            <div className='payment-icons mt-3'>
+              <img src="Images/visa.png" alt=""/>
+              <img src="Images/money.png" alt=""/>
+              <img src="Images/paypal.png" alt=""/>
+              <img src="Images/google-pay.png" alt=""/>
+              <img src="Images/paytm.png" alt=""/>
             </div>
           </div>
 
@@ -170,6 +211,13 @@ export const Home = () => {
             <div>
               Social sharing describes when social media users broadcast web content on a
               social network to their connections
+            </div>
+            <div className='social-icons mt-3'> 
+            <img src="Images/youtube.png" alt=""/>
+              <img src="Images/instagram.png" alt=""/>
+              <img src="Images/twitter.png" alt=""/>
+              <img src="Images/facebook.png" alt=""/>
+              <img src="Images/telegram.png" alt=""/>
             </div>
           </div>
         </div>
