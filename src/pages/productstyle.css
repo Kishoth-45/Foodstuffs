@@ -65,6 +65,10 @@
         font-family: "Alatsi", sans-serif;
         align-self: last baseline;
     }
+    .viewcart{
+        font-size: 14px;
+        width: 45% !important;
+    }
     
     .ordernowmini:hover{
         background-color: black;
@@ -1036,6 +1040,7 @@
     padding:0px 7.5rem;
     padding-bottom: 100px;
     position: relative;
+    font-family: "Kanit", sans-serif;
 }
 
 .see-more-btn{
@@ -1046,6 +1051,9 @@
 }
 .see-more-btn:hover{
     opacity: 0.8;
+}
+.see-more-btn i{
+    font-size: 20px;
 }
 
 @media all and (max-width:768px) {

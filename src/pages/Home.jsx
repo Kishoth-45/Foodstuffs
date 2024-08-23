@@ -204,6 +204,7 @@ export const Home = () => {
             <div>Article Page</div>
             <div>Blog Page</div>
             <div>Category Page</div>
+            
           </div>
 
           <div className='footer-share'>
