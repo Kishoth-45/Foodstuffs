@@ -131,12 +131,14 @@ body {
   color: black;
   border: none;
   outline: none;
+  text-decoration: none;
 }
 
 .findbtn {
   background-color: #febd2f;
   color: black;
   border: none;
+  text-decoration: none;
   outline: none;
 }
 .banner-btns{

@@ -125,6 +125,48 @@ export const Userprofile = () => {
         };
     }, []);
 
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [phone,setPhone]=useState('')
+    const [address,setAddress]=useState('')
+
+    const [username,setUsername]=useState('')
+    const [useremail,setUseremail]=useState('')
+    const [userphone,setUserphone]=useState('')
+    const [Error,setError]=useState('')
+    const checkInput = () => {
+        if (!name) {
+            setError('Name is required');
+            return false;
+        } else if (!email) {
+            setError('Email is required');
+            return false;
+        } else if (!phone) {
+            setError('Phone number is required');
+            return false;
+        } else if (!address) {
+            setError('Address is required');
+            return false;
+        }
+        setError(''); // Clear the error if all inputs are valid
+        return true;
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if (checkInput()) {
+            setUsername(name);
+            setUseremail(email);
+            setUserphone(phone);
+    
+            // Clear the form fields after successful validation and submission
+            setName('');
+            setEmail('');
+            setPhone('');
+            setAddress('');
+        }
+    };
 
     return (
         <div className='userprofile'>
@@ -137,14 +179,14 @@ export const Userprofile = () => {
                             <i className="fa-solid fa-pen img-edit"></i>
                         </label>
                     </div>
-                    <div className='div-details mb-2 mt-2'> <h1>name</h1> </div>
-                    <div className='div-details'> emaail id</div>
-                    <div className='div-details'> +91 9876543210 </div>
-                    <div className='div-details'> email </div>
+                    <div className='div-details mb-2 mt-2'> <h1>{username}</h1> </div>
+                    <div className='div-details'> {useremail}</div>
+                    <div className='div-details'> {userphone} </div>
                     <div className='div-details'> Your Ordered Items : 0 </div>
 
                     <div className='div-details btns-userprofile'>
-                        <div className='user-cart-btn'>Mycart</div> <div>Shopping</div>
+                        <div className='user-cart-btn'> <i className="fa-solid fa-basket-shopping me-1"></i> Mycart</div>
+                         <div><i className="fa-solid fa-utensils"></i> Shopping</div>
                     </div>
                 </div>
                 <div className='user-edit-details'>
@@ -154,25 +196,30 @@ export const Userprofile = () => {
                             <i className="fa-solid fa-pen"></i> Edit
                         </div>
                     </div>
+                    <form onSubmit={handleSubmit}>
                     <div className='edit-input mt-5'>
                         <div>
                             <input type="text" placeholder='Enter your new Name' disabled={isDisabled}
-                                onChange={(e) => (e.target.value)}
+                               value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                         <div>
                             <input type="email" placeholder='Email Id' disabled={isDisabled}
-                                onChange={(e) => (e.target.value)}
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
                             <input type="number" placeholder='Phone Number' disabled={isDisabled}
-                                onChange={(e) => (e.target.value)}
+                                value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
                             />
                         </div>
                         <div>
                             <textarea type="text" placeholder='Your Address' disabled={isDisabled}
-                                onChange={(e) => (e.target.value)}
+                            value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                             />
                         </div>
                         <div className='checkbox-items'>
@@ -192,15 +239,17 @@ export const Userprofile = () => {
                                     </tr>
                                 </tbody>
                             </table>
+                            <div className='user-error'>{Error}</div>
                         </div>
-                        <button className='btn btn-primary save-profile' disabled={isDisabled}> Save</button>
+                        <button className='btn btn-primary save-profile' type='submit' disabled={isDisabled}> Save</button>
                     </div>
+                    </form>
                     <div className='your-orders mt-5'>
                         <div>
                             Ordered Items <br />
                             You Haven't Purchased Our Product
                         </div>
-                        <div><Link to='/home' className='go-shopping'>Go To Shopping --</Link></div>
+                        <div><Link to='/home' className='go-shopping'>Go To Shopping <i className="fa-solid fa-utensils"></i></Link></div>
                     </div>
                 </div>
             </>

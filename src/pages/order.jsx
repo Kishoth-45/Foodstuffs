@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { OrderContext } from '../OrderContext';
 import {Link} from 'react-router-dom'
 
@@ -35,6 +35,25 @@ export const Order = () => {
   }
 
   const { Image, Productname, Quantity, Option, Price } = order;
+
+  const [length,setLength]=useState(1)
+
+  const [price,setPrice]=useState(Price)
+
+  const decrease=()=>{
+    if (length > 1) {
+      const newLength = length - 1;
+      setLength(newLength);
+      setPrice(Price * newLength);
+    }
+  }
+
+  const increase=()=>{
+    const newlength=length+1
+    setLength(newlength)
+    setPrice(Price * newlength)
+  }
+
   return (
     <>
     <div className='ordernowpage'>
@@ -101,14 +120,14 @@ export const Order = () => {
 
       <div className='mt-5'>
         <p  className='orderdetails-head'>Order Summary </p>
-        <div>
-          Item 1
-          Subtotal  87832
+        <div className='d-flex mb-2'>
+          <div>Item {length} </div> 
+         <div className='ms-2'> Subtotal  {price}</div> 
         </div>
         <div className='btn btn-primary paynow'>Pay Now</div>
       </div>
-      <div className='mt-2 copyright-ordernow'>
-      All rights reserved Foodstuffs by Kishoth-45
+      <div className='mt-3 copyright-ordernow'>
+      All rights reserved by Kishoth-45
     </div>
 
     </div>
@@ -121,11 +140,11 @@ export const Order = () => {
         <div className='order-title'>{Productname}</div>
         <div className='mt-1'>{Quantity}: {Option}</div>
         <div className='mycart-increment mt-1'>
-          <div className='minus'> - </div>
-          <div>1</div>
-          <div className='plus'>+</div>
+          <div className='minus' onClick={decrease}> - </div>
+          <div>{length}</div>
+          <div className='plus' onClick={increase}>+</div>
         </div>
-        <div className='mt-1'>Rs.{Price}</div>
+        <div className='mt-1'>Rs.{price}</div>
       </div>
     </div>
    
